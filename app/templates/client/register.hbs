@@ -1,0 +1,22 @@
+<form class="form-horizontal" role="form">
+<fieldset>
+  {{#if model.name}}
+    <legend>Client: {{model.name}}</legend>
+  {{else}}
+    <legend>New Client</legend>
+  {{/if}}
+
+  <div class="form-group">
+      <label for="trusted">Trusted Mozilla Client: {{view Ember.Checkbox name=model.trusted checked=model.trusted id="trusted"}}</label>
+  </div>
+
+  {{partial 'client/form'}}
+
+</fieldset>
+</form>
+{{#unless model.secret}}
+<div class="btn-group">
+  <button class="button alert register-cancel" {{action 'cancel' this}}>Cancel</button>
+  <button class="button success register-create" {{action 'create' this}}>Create</button>
+</div>
+{{/unless}}
